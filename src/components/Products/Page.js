@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { NavLink } from 'react-router-dom';
-import { Button, Grid } from '@mui/material';
+import { Button, Card, CardContent, Grid, Typography, Menu, MenuItem } from '@mui/material';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import DataProducts from './DataProducts';
 
 function Products() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [filter, setFilter] = useState(data);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [selectedProductId, setSelectedProductId] = useState(null);
 
     useEffect(() => {
         let componentMounted = true;
@@ -35,15 +41,42 @@ function Products() {
         setFilter(updateList);
     };
 
+    const handleMenuOpen = (event, productId) => {
+        setAnchorEl(event.currentTarget);
+        setSelectedProductId(productId);
+    };
+
+    const handleMenuClose = () => {
+        setAnchorEl(null);
+        setSelectedProductId(null);
+    };
+
+    const handleEdit = (productId) => {
+        console.log(`Edit product with ID: ${productId}`);
+        handleMenuClose();
+    };
+
+    const handleDelete = (productId) => {
+        const updatedData = data.filter((product) => product.id !== productId);
+        setData(updatedData);
+        setFilter(updatedData);
+        console.log(`Delete product with ID: ${productId}`);
+        handleMenuClose();
+    };
     if (loading) {
         return (
-            <div className="container mx-auto p-4">
+            <div className="container mx-auto p-4 my-8">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     {[...Array(6)].map((_, index) => (
                         <div key={index} className="card">
                             <Skeleton height={300} />
                             <div className="m-3 mb-0">
-                                <Skeleton width={150} />
+                                <Card key={index} className="card" style={{ borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+                                    <Skeleton height={300} width={'100%'} />
+                                    <CardContent>
+                                        <Skeleton width={150} />
+                                    </CardContent>
+                                </Card>
                             </div>
                             <div className="flex justify-between items-center m-3">
                                 <div><Skeleton width={50} /></div>
@@ -55,6 +88,7 @@ function Products() {
             </div>
         );
     }
+
 
     return (
         <div className="container mx-auto p-4">

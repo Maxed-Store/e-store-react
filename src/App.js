@@ -2,9 +2,15 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ADMIN_ROLE, USER_ROLE, SELLER_ROLE, SUPER_ADMIN_ROLE } from './constant';
 import Footer from './components/common/Footer.js';
+
+import CircularProgress from '@mui/material/CircularProgress';
+
 import CircularProgress from '@mui/material/CircularProgress';
 import Skeleton from '@mui/material/Skeleton';
-import  Navbar  from './components/common/Navbar';
+import  Navbar  from './components/common/Navbar'
+import TopProducts from './components/TopProducts/TopProducts';
+import EditProduct from './components/Products/EditProduct';
+
 import ProtectedRoute from './components/ProtectedRoute';
 import Transactions from './pages/transactions/transactions.js';
 import UpdateUserForm from './pages/UserManagement/UserUpdate.js';

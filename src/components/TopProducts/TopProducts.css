@@ -1,0 +1,11 @@
+/* body, .App {
+    background-color: var(--body-dark, rgba(0,66,154,1));
+    color: var(--widgets-dark, #fff);
+  }
+  
+  header {
+    background-color: var(--widgets-dark, rgba(0,66,154,1));
+  }
+  
+  .category-image {
+    width: 100%; /* Adjust as needed */

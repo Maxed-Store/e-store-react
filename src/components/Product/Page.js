@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import Skeleton from "react-loading-skeleton";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import DataProduct from "./DataProduct";
 
 const Product = () => {
   const { id } = useParams();
@@ -25,58 +26,9 @@ const Product = () => {
     getProduct();
   }, [id]);
 
-  const {
-    image,
-    category,
-    title,
-    rating,
-    price,
-    description,
-  } = product || {};
-
   const renderLoadingSkeleton = () => (
     <div className="container px-0 mb-5" style={{ marginTop: "66px" }}>
-      <div className="row d-flex justify-content-center">
-        <div className="col-md-12">
-          <NavLink className="text-decoration-none text-dark" to={`/`}>
-            <div className="d-flex align-items-center m-3">
-              <Skeleton height={20} width={50} />
-            </div>
-          </NavLink>
-          <div className="row">
-            <div className="col-md-6">
-              <div className="images p-3">
-                <div className="text-center p-4">
-                  <Skeleton height={300} width={250} />
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="border p-4">
-                <div className="mt-4 mb-3">
-                  <span className="text-muted text-capitalize">
-                    <Skeleton height={30} width={150} />
-                  </span>
-                  <h5 className="text-uppercase">
-                    <Skeleton height={30} width={200} />
-                  </h5>
-                  <Skeleton height={20} width={70} />
-                  <Skeleton height={30} width={100} />
-                </div>
-                <p className="about">
-                  <Skeleton height={10} width={300} />
-                  <Skeleton height={10} width={300} />
-                  <Skeleton height={10} width={300} />
-                  <Skeleton height={10} width={300} />
-                </p>
-                <div className="cart mt-4 align-items-center">
-                  <Skeleton height={40} width={150} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Loading skeleton JSX */}
     </div>
   );
 
